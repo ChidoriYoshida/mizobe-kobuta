@@ -1,0 +1,1087 @@
+<!DOCTYPE html>
+<!-- saved from url=(0095)file:///C:/Users/h-miz/Downloads/%E5%AD%90%E8%B1%9A%E8%88%8E%E6%A3%9A%E5%8D%B8%E8%A1%A8_36.html -->
+<html lang="ja"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>溝辺農場　子豚舎棚卸表</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Meiryo', 'Yu Gothic', sans-serif; background: #f5f4f0; padding: 1rem; }
+h1.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+/* ── 上部バー ── */
+.top-bar { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 0.75rem; }
+.date-bar { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 6px 12px; font-size: 12px; color: #555; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.date-bar input[type=text] { width: 38px; text-align: center; font-size: 12px; padding: 2px 4px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+.date-bar input.rec-inp { width: 90px; }
+.save-indicator { font-size: 11px; color: #888; }
+.save-ok { color: #065f46; }
+
+.tabs { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 1rem; }
+.tab-btn { padding: 6px 14px; font-size: 13px; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #555; cursor: pointer; }
+.tab-btn.active { background: #1a56a0; color: #fff; border-color: #1a56a0; font-weight: 500; }
+.tab-btn:hover:not(.active) { background: #eef3fa; }
+.sheet { display: none; }
+.sheet.active { display: block; }
+
+.form-card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 1.25rem 1.5rem; max-width: 580px; }
+.title-row { text-align: center; font-size: 18px; font-weight: bold; margin-bottom: 10px; }
+.room-label { font-size: 15px; font-weight: bold; text-align: center; margin-bottom: 6px; }
+
+.col-heads { display: grid; grid-template-columns: 2.2rem 1fr 1fr 6px 2.2rem 1fr 1fr; gap: 3px; margin-bottom: 3px; }
+.col-heads span { font-size: 11px; color: #888; text-align: center; }
+.row-grid { display: grid; grid-template-columns: 2.2rem 1fr 1fr 6px 2.2rem 1fr 1fr; gap: 3px; align-items: stretch; margin-bottom: 3px; height: 32px; }
+.num-lbl { font-size: 12px; text-align: center; color: #555; background: #f5f4f0; border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; }
+.inp { font-size: 13px; text-align: center; padding: 0 2px; border: 1px solid #ccc; border-radius: 4px; width: 100%; height: 100%; font-family: inherit; }
+.inp:focus { outline: none; border-color: #1a56a0; }
+.side-box { font-size: 13px; font-weight: bold; text-align: center; color: #0c447c; background: #e6f1fb; border: 1px solid #85b7eb; border-radius: 4px; display: flex; align-items: center; justify-content: center; width: 5rem; height: 32px; }
+.side-inp { font-size: 13px; text-align: center; padding: 0 2px; border: 1px solid #ccc; border-radius: 4px; width: 5rem; height: 32px; background: #fafaf8; font-family: inherit; }
+.side-inp:focus { outline: none; border-color: #1a56a0; }
+.side-lbl { font-size: 10px; color: #888; margin-bottom: 1px; }
+.side-wrap { display: flex; flex-direction: column; justify-content: center; }
+.rows-with-side { display: flex; gap: 6px; align-items: center; }
+.rows-col { flex: 1; }
+.side-col { display: flex; flex-direction: column; gap: 8px; justify-content: center; padding-top: 20px; }
+
+.match-row { display: flex; justify-content: flex-end; align-items: center; gap: 8px; margin-top: 6px; }
+.match-lbl { font-size: 11px; color: #888; }
+.match-badge { font-size: 11px; padding: 2px 10px; border-radius: 6px; font-weight: bold; }
+.match-ok { background: #d1fae5; color: #065f46; }
+.match-ng { background: #fee2e2; color: #991b1b; }
+.match-na { background: #f1f0eb; color: #888; }
+
+.grand-total-card { background: #fff; border: 1px solid #ddd; border-radius: 10px; padding: 1rem 1.5rem; max-width: 580px; margin-top: 1rem; display: flex; align-items: center; gap: 1rem; }
+.grand-total-card .label { font-size: 14px; color: #555; font-weight: bold; }
+.grand-total-card .val { font-size: 20px; font-weight: bold; color: #0c447c; background: #e6f1fb; border: 1px solid #85b7eb; border-radius: 6px; padding: 4px 16px; }
+.band-card { background:#fff; border:1px solid #ddd; border-radius:10px; padding:0.7rem 1.2rem; max-width:580px; margin-top:0.6rem; display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+.band-card .label { font-size:13px; color:#555; font-weight:bold; }
+.band-card .bslot { display:flex; flex-direction:column; align-items:center; min-width:50px; background:#e6f1fb; border:1px solid #85b7eb; border-radius:6px; padding:3px 12px; }
+.band-card .bslot b { font-size:11px; color:#0c447c; }
+.band-card .bslot i { font-size:19px; font-weight:bold; color:#0c447c; font-style:normal; }
+.band-card .bslot.bx { background:#fbeee9; border-color:#e0a99b; }
+.band-card .bslot.bx b, .band-card .bslot.bx i { color:#a5402a; }
+.band-note { font-size:11px; color:#777; max-width:580px; margin-top:5px; line-height:1.5; }
+.room-bands { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:8px; padding-top:8px; border-top:1px dashed #ddd; }
+.room-bands .rb-lbl { font-size:12px; color:#555; font-weight:bold; }
+.room-bands .rb { display:inline-flex; align-items:center; gap:4px; background:#eef4fb; border:1px solid #cadff2; border-radius:6px; padding:2px 9px; font-size:13px; }
+.room-bands .rb b { font-size:11px; color:#0c447c; font-weight:bold; }
+.room-bands .rb i { font-style:normal; font-weight:bold; color:#0c447c; }
+.room-bands .rb.bx { background:#fbeee9; border-color:#e0a99b; }
+.room-bands .rb.bx b, .room-bands .rb.bx i { color:#a5402a; }
+.p-bands { grid-column:1/-1; font-size:10px; margin-top:2px; padding-top:2px; border-top:1px solid #ccc; }
+.print-bands { margin-top:6px; font-size:12px; font-weight:bold; text-align:center; border:1px solid #000; padding:4px; }
+
+.btn-row { display: flex; gap: 8px; margin-top: 1rem; flex-wrap: wrap; }
+.btn { padding: 7px 16px; font-size: 13px; cursor: pointer; border: 1px solid #ccc; border-radius: 6px; background: #fff; color: #333; font-family: inherit; }
+.btn:hover { background: #f0f0f0; }
+.btn-primary { background: #1a56a0; color: #fff; border-color: #1a56a0; }
+.btn-primary:hover { background: #154484; }
+.btn-danger { border-color: #f87171; color: #b91c1c; }
+.btn-danger:hover { background: #fee2e2; }
+
+/* ===== 印刷 ===== */
+@media print {
+  @page { size: A4 landscape; margin: 12mm 6mm 6mm 18mm; }
+  body { background: #fff; padding: 0; }
+  .top-bar, .tabs, .btn-row, .grand-total-card, .band-card, .band-note, .sheet { display: none !important; }
+  #print-area { display: block !important; }
+
+  .print-header { text-align: center; margin-bottom: 3mm; }
+  .print-header h2 { font-size: 14pt; font-weight: bold; margin-bottom: 1mm; }
+  .print-header .print-date { font-size: 10pt; color: #555; }
+
+  .print-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; }
+  .p-room { border: 0.5pt solid #ccc; border-radius: 3pt; padding: 3pt 3pt; }
+  .p-room-label { font-size: 10pt; font-weight: bold; text-align: center; margin-bottom: 2.5pt; border-bottom: 0.5pt solid #eee; padding-bottom: 2pt; }
+  .p-inner { display: flex; gap: 3pt; align-items: center; }
+  .p-rows-col { flex: 1; }
+  .p-side-col { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2pt; padding-top: 10pt; }
+  .p-side-lbl { font-size: 6pt; color: #888; white-space: nowrap; }
+  .p-side-val { font-size: 9pt; font-weight: bold; text-align: center; background: #e6f1fb; border: 0.5pt solid #85b7eb; border-radius: 2pt; color: #0c447c; display: flex; align-items: center; justify-content: center; width: 26pt; height: 20pt; }
+  .p-col-heads { display: grid; grid-template-columns: 10pt 1fr 1fr 3pt 10pt 1fr 1fr; gap: 2pt; margin-bottom: 1.5pt; }
+  .p-col-heads span { font-size: 7pt; color: #888; text-align: center; }
+  .p-row { display: grid; grid-template-columns: 10pt 1fr 1fr 3pt 10pt 1fr 1fr; gap: 2pt; align-items: stretch; margin-bottom: 2pt; height: 15pt; }
+  .p-gap { }
+  .p-lbl { font-size: 8pt; text-align: center; background: #f5f4f0; border: 0.5pt solid #ddd; border-radius: 1.5pt; display: flex; align-items: center; justify-content: center; }
+  .p-inp { font-size: 8pt; text-align: center; border: 0.5pt solid #ccc; border-radius: 1.5pt; display: flex; align-items: center; justify-content: center; }
+
+  .print-footer { margin-top: 3mm; text-align: right; font-size: 11pt; font-weight: bold; }
+  .print-footer .val { display: inline-block; background: #e6f1fb; border: 0.5pt solid #85b7eb; border-radius: 3pt; padding: 2pt 12pt; color: #0c447c; font-size: 12pt; }
+}
+</style>
+</head>
+<body>
+<h1 class="sr-only">溝辺農場 子豚舎棚卸表</h1>
+
+<!-- 共通日付・記録者バー -->
+<div class="top-bar">
+  <div class="date-bar">
+    <input type="text" id="g-year" placeholder="年" style="width:42px" oninput="syncDate()"> 年
+    <input type="text" id="g-month" placeholder="月" style="width:34px" oninput="syncDate()"> 月
+    <input type="text" id="g-day" placeholder="日" style="width:34px" oninput="syncDate()"> 日
+    　記録者 <input type="text" id="g-rec" class="rec-inp" placeholder="" oninput="syncDate()">
+  </div>
+  <span class="save-indicator" id="save-indicator"></span>
+</div>
+
+<div class="tabs" id="tabs"><button class="tab-btn active" data-room="1">1号室</button><button class="tab-btn" data-room="2">2号室</button><button class="tab-btn" data-room="3">3号室</button><button class="tab-btn" data-room="4">4号室</button><button class="tab-btn" data-room="5">5号室</button><button class="tab-btn" data-room="6">6号室</button><button class="tab-btn" data-room="7">7号室</button><button class="tab-btn" data-room="8">8号室</button><button class="tab-btn" data-room="9">9号室</button></div>
+<div id="sheets"><div class="sheet active" id="sheet-1"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">1号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-1"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-1-0" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="lw-1-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-1-0" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="rw-1-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-1-1" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="lw-1-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-1-1" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="rw-1-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-1-2" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="lw-1-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-1-2" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="rw-1-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-1-3" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="lw-1-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-1-3" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="rw-1-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-1-4" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="lw-1-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-1-4" placeholder="" oninput="calcSum(1);scheduleSave()">
+      <input class="inp" type="number" id="rw-1-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-1">250</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-1" placeholder="入力" oninput="checkMatch(1);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-1">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-1">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-2"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">2号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-2"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-2-0" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="lw-2-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-2-0" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="rw-2-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-2-1" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="lw-2-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-2-1" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="rw-2-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-2-2" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="lw-2-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-2-2" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="rw-2-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-2-3" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="lw-2-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-2-3" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="rw-2-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-2-4" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="lw-2-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-2-4" placeholder="" oninput="calcSum(2);scheduleSave()">
+      <input class="inp" type="number" id="rw-2-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-2">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-2" placeholder="入力" oninput="checkMatch(2);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-2">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-2">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-3"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">3号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-3"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-3-0" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="lw-3-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-3-0" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="rw-3-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-3-1" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="lw-3-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-3-1" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="rw-3-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-3-2" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="lw-3-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-3-2" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="rw-3-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-3-3" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="lw-3-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-3-3" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="rw-3-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-3-4" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="lw-3-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-3-4" placeholder="" oninput="calcSum(3);scheduleSave()">
+      <input class="inp" type="number" id="rw-3-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-3">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-3" placeholder="入力" oninput="checkMatch(3);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-3">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-3">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-4"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">4号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-4"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-4-0" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="lw-4-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-4-0" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="rw-4-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-4-1" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="lw-4-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-4-1" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="rw-4-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-4-2" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="lw-4-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-4-2" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="rw-4-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-4-3" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="lw-4-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-4-3" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="rw-4-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-4-4" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="lw-4-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-4-4" placeholder="" oninput="calcSum(4);scheduleSave()">
+      <input class="inp" type="number" id="rw-4-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-4">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-4" placeholder="入力" oninput="checkMatch(4);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-4">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-4">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-5"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">5号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-5"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-5-0" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="lw-5-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-5-0" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="rw-5-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-5-1" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="lw-5-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-5-1" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="rw-5-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-5-2" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="lw-5-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-5-2" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="rw-5-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-5-3" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="lw-5-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-5-3" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="rw-5-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-5-4" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="lw-5-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-5-4" placeholder="" oninput="calcSum(5);scheduleSave()">
+      <input class="inp" type="number" id="rw-5-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-5">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-5" placeholder="入力" oninput="checkMatch(5);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-5">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-5">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-6"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">6号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-6"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-6-0" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="lw-6-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-6-0" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="rw-6-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-6-1" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="lw-6-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-6-1" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="rw-6-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-6-2" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="lw-6-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-6-2" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="rw-6-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-6-3" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="lw-6-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-6-3" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="rw-6-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-6-4" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="lw-6-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-6-4" placeholder="" oninput="calcSum(6);scheduleSave()">
+      <input class="inp" type="number" id="rw-6-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-6">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-6" placeholder="入力" oninput="checkMatch(6);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-6">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-6">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-7"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">7号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-7"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-7-0" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="lw-7-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-7-0" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="rw-7-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-7-1" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="lw-7-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-7-1" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="rw-7-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-7-2" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="lw-7-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-7-2" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="rw-7-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-7-3" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="lw-7-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-7-3" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="rw-7-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-7-4" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="lw-7-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-7-4" placeholder="" oninput="calcSum(7);scheduleSave()">
+      <input class="inp" type="number" id="rw-7-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-7">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-7" placeholder="入力" oninput="checkMatch(7);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-7">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-7">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-8"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">8号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-8"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-8-0" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="lw-8-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-8-0" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="rw-8-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-8-1" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="lw-8-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-8-1" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="rw-8-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-8-2" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="lw-8-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-8-2" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="rw-8-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-8-3" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="lw-8-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-8-3" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="rw-8-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-8-4" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="lw-8-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-8-4" placeholder="" oninput="calcSum(8);scheduleSave()">
+      <input class="inp" type="number" id="rw-8-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-8">110</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-8" placeholder="入力" oninput="checkMatch(8);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-8">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-8">—</span>
+    </div>
+  </div></div><div class="sheet" id="sheet-9"><div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">9号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-9"><div class="row-grid">
+      <div class="num-lbl">⑤</div>
+      <input class="inp" type="number" id="lh-9-0" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="lw-9-0" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑥</div>
+      <input class="inp" type="number" id="rh-9-0" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="rw-9-0" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">④</div>
+      <input class="inp" type="number" id="lh-9-1" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="lw-9-1" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑦</div>
+      <input class="inp" type="number" id="rh-9-1" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="rw-9-1" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">③</div>
+      <input class="inp" type="number" id="lh-9-2" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="lw-9-2" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑧</div>
+      <input class="inp" type="number" id="rh-9-2" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="rw-9-2" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">②</div>
+      <input class="inp" type="number" id="lh-9-3" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="lw-9-3" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑨</div>
+      <input class="inp" type="number" id="rh-9-3" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="rw-9-3" placeholder="" oninput="scheduleSave()">
+    </div><div class="row-grid">
+      <div class="num-lbl">①</div>
+      <input class="inp" type="number" id="lh-9-4" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="lw-9-4" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">⑩</div>
+      <input class="inp" type="number" id="rh-9-4" placeholder="" oninput="calcSum(9);scheduleSave()">
+      <input class="inp" type="number" id="rw-9-4" placeholder="" oninput="scheduleSave()">
+    </div></div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-9">0</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-9" placeholder="入力" oninput="checkMatch(9);scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-9">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-9">—</span>
+    </div>
+  </div></div></div>
+
+<div class="grand-total-card">
+  <span class="label">総頭数</span>
+  <span class="val" id="grand-total">1020</span>
+</div>
+
+<div class="band-card" id="band-card">
+  <span class="label">体重区分別 頭数（全室 合計）</span>
+  <span class="bslot"><b>10kg</b><i id="bt-10">0</i></span>
+  <span class="bslot"><b>20kg</b><i id="bt-20">0</i></span>
+  <span class="bslot"><b>30kg</b><i id="bt-30">0</i></span>
+  <span class="bslot"><b>40kg</b><i id="bt-40">0</i></span>
+  <span class="bslot bx" id="bt-x-wrap" style="display:none"><b>未分類</b><i id="bt-x">0</i></span>
+</div>
+<div class="band-note">体重から自動分類：5以上15未満→10／15以上25未満→20／25以上35未満→30／35以上→40kg。5未満・体重未入力は「未分類」。</div>
+
+<div class="btn-row">
+  <button class="btn btn-primary" onclick="printAll()">全号室まとめて印刷（A4一枚）</button>
+  <button class="btn" onclick="printCurrent()">この号室だけ印刷</button>
+  <button class="btn btn-danger" onclick="clearAll()">オールクリア</button>
+</div>
+
+<div id="print-area" style="display:none;"></div>
+
+<script>
+const ROOMS = 9;
+const LEFT  = ['⑤','④','③','②','①'];
+const RIGHT = ['⑥','⑦','⑧','⑨','⑩'];
+let currentRoom = 1;
+let saveTimer = null;
+
+// ── LocalStorage キー ──
+const KEY_DATE = 'kobuta_date';
+const KEY_REC  = 'kobuta_rec';
+function roomKey(n, field) { return 'kobuta_r' + n + '_' + field; }
+
+// ── 保存 ──
+function saveAll() {
+  localStorage.setItem(KEY_DATE, JSON.stringify({
+    y: document.getElementById('g-year').value,
+    m: document.getElementById('g-month').value,
+    d: document.getElementById('g-day').value,
+  }));
+  localStorage.setItem(KEY_REC, document.getElementById('g-rec').value);
+  for (let n = 1; n <= ROOMS; n++) {
+    const obj = {};
+    for (let i = 0; i < 5; i++) {
+      obj['lh'+i] = document.getElementById('lh-'+n+'-'+i)?.value || '';
+      obj['lw'+i] = document.getElementById('lw-'+n+'-'+i)?.value || '';
+      obj['rh'+i] = document.getElementById('rh-'+n+'-'+i)?.value || '';
+      obj['rw'+i] = document.getElementById('rw-'+n+'-'+i)?.value || '';
+    }
+    obj['sub'] = document.getElementById('subtotal-'+n)?.value || '';
+    localStorage.setItem(roomKey(n,'data'), JSON.stringify(obj));
+  }
+  const ind = document.getElementById('save-indicator');
+  ind.textContent = '保存済み ✓';
+  ind.className = 'save-indicator save-ok';
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(() => { ind.textContent = '—'; ind.className = 'save-indicator'; }, 3000);
+}
+
+function scheduleSave() {
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(saveAll, 800);
+  document.getElementById('save-indicator').textContent = '保存中…';
+  document.getElementById('save-indicator').className = 'save-indicator';
+}
+
+// ── 復元 ──
+function loadAll() {
+  const date = JSON.parse(localStorage.getItem(KEY_DATE) || 'null');
+  if (date) {
+    document.getElementById('g-year').value  = date.y || '';
+    document.getElementById('g-month').value = date.m || '';
+    document.getElementById('g-day').value   = date.d || '';
+  }
+  document.getElementById('g-rec').value = localStorage.getItem(KEY_REC) || '';
+  for (let n = 1; n <= ROOMS; n++) {
+    const obj = JSON.parse(localStorage.getItem(roomKey(n,'data')) || 'null');
+    if (!obj) continue;
+    for (let i = 0; i < 5; i++) {
+      const lh = document.getElementById('lh-'+n+'-'+i); if (lh) lh.value = obj['lh'+i] || '';
+      const lw = document.getElementById('lw-'+n+'-'+i); if (lw) lw.value = obj['lw'+i] || '';
+      const rh = document.getElementById('rh-'+n+'-'+i); if (rh) rh.value = obj['rh'+i] || '';
+      const rw = document.getElementById('rw-'+n+'-'+i); if (rw) rw.value = obj['rw'+i] || '';
+    }
+    const sub = document.getElementById('subtotal-'+n); if (sub) sub.value = obj['sub'] || '';
+    calcSum(n);
+  }
+}
+
+// ── オールクリア ──
+function clearAll() {
+  if (!confirm('全号室のデータをクリアします。よろしいですか？')) return;
+  localStorage.clear();
+  document.getElementById('g-year').value  = '';
+  document.getElementById('g-month').value = '';
+  document.getElementById('g-day').value   = '';
+  document.getElementById('g-rec').value   = '';
+  for (let n = 1; n <= ROOMS; n++) {
+    for (let i = 0; i < 5; i++) {
+      ['lh','lw','rh','rw'].forEach(k => {
+        const el = document.getElementById(k+'-'+n+'-'+i);
+        if (el) el.value = '';
+      });
+    }
+    const sub = document.getElementById('subtotal-'+n); if (sub) sub.value = '';
+    calcSum(n);
+  }
+  document.getElementById('save-indicator').textContent = 'クリアしました';
+  document.getElementById('save-indicator').className = 'save-indicator';
+}
+
+// ── 日付同期 ──
+function syncDate() { scheduleSave(); }
+
+// ── シート構築 ──
+function buildSheet(n) {
+  const div = document.createElement('div');
+  div.className = 'sheet';
+  div.id = 'sheet-' + n;
+  let rows = '';
+  for (let i = 0; i < 5; i++) {
+
+    rows += `<div class="row-grid">
+      <div class="num-lbl">${LEFT[i]}</div>
+      <input class="inp" type="number" id="lh-${n}-${i}" placeholder="" oninput="calcSum(${n});scheduleSave()">
+      <input class="inp" type="number" id="lw-${n}-${i}" placeholder="" oninput="scheduleSave()">
+      <div></div>
+      <div class="num-lbl">${RIGHT[i]}</div>
+      <input class="inp" type="number" id="rh-${n}-${i}" placeholder="" oninput="calcSum(${n});scheduleSave()">
+      <input class="inp" type="number" id="rw-${n}-${i}" placeholder="" oninput="scheduleSave()">
+    </div>`;
+  }
+  div.innerHTML = `<div class="form-card">
+    <div class="title-row">溝辺農場　子豚舎棚卸表</div>
+    <div class="room-label">${n}号室</div>
+    <div class="rows-with-side">
+      <div class="rows-col">
+        <div class="col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        <div id="rows-${n}">${rows}</div>
+      </div>
+      <div class="side-col">
+        <div>
+          <div class="side-lbl">頭数合計</div>
+          <div class="side-box" id="auto-sum-${n}">0</div>
+        </div>
+        <div>
+          <div class="side-lbl">頭数小計</div>
+          <input class="side-inp" type="number" id="subtotal-${n}" placeholder="入力" oninput="checkMatch(${n});scheduleSave()">
+        </div>
+      </div>
+    </div>
+    <div class="match-row" id="match-row-${n}">
+      <span class="match-lbl">照合</span>
+      <span class="match-badge match-na" id="match-${n}">—</span>
+    </div>
+    <div class="room-bands" id="bands-${n}">
+      <span class="rb-lbl">体重区分</span>
+      <span class="rb"><b>10kg</b><i data-b="10">0</i></span>
+      <span class="rb"><b>20kg</b><i data-b="20">0</i></span>
+      <span class="rb"><b>30kg</b><i data-b="30">0</i></span>
+      <span class="rb"><b>40kg</b><i data-b="40">0</i></span>
+      <span class="rb bx" style="display:none"><b>未分類</b><i>0</i></span>
+    </div>
+  </div>`;
+  return div;
+}
+
+function calcSum(n) {
+  let t = 0;
+  for (let i = 0; i < 5; i++) {
+    t += parseInt(document.getElementById('lh-'+n+'-'+i)?.value) || 0;
+    t += parseInt(document.getElementById('rh-'+n+'-'+i)?.value) || 0;
+  }
+  document.getElementById('auto-sum-'+n).textContent = t;
+  checkMatch(n);
+  updateGrandTotal();
+}
+
+function checkMatch(n) {
+  const autoVal = parseInt(document.getElementById('auto-sum-'+n).textContent) || 0;
+  const subEl = document.getElementById('subtotal-'+n);
+  const badge = document.getElementById('match-'+n);
+  const row   = document.getElementById('match-row-'+n);
+  if (!subEl.value) {
+    badge.className = 'match-badge match-na'; badge.textContent = '—';
+  } else if (autoVal === parseInt(subEl.value)) {
+    badge.className = 'match-badge match-ok'; badge.textContent = '一致 ✓';
+  } else {
+    badge.className = 'match-badge match-ng';
+    badge.textContent = '不一致 (' + autoVal + ' vs ' + parseInt(subEl.value) + ')';
+  }
+}
+
+function updateGrandTotal() {
+  let g = 0;
+  for (let n = 1; n <= ROOMS; n++) g += parseInt(document.getElementById('auto-sum-'+n)?.textContent) || 0;
+  document.getElementById('grand-total').textContent = g;
+  refreshBands();
+}
+// ── 体重区分（10/20/30/40kg）集計 ──
+function bandOf(w){
+  if(w===''||w==null) return 0;
+  var v=parseFloat(w); if(isNaN(v)) return 0;
+  if(v>=5&&v<15) return 10;
+  if(v>=15&&v<25) return 20;
+  if(v>=25&&v<35) return 30;
+  if(v>=35) return 40;
+  return 0;
+}
+function roomBands(n){
+  var b={b10:0,b20:0,b30:0,b40:0,bx:0};
+  for(var i=0;i<5;i++){
+    [['lh','lw'],['rh','rw']].forEach(function(p){
+      var h=parseInt(document.getElementById(p[0]+'-'+n+'-'+i)?.value)||0;
+      if(h<=0) return;
+      var bd=bandOf(document.getElementById(p[1]+'-'+n+'-'+i)?.value||'');
+      if(bd===10)b.b10+=h;else if(bd===20)b.b20+=h;else if(bd===30)b.b30+=h;else if(bd===40)b.b40+=h;else b.bx+=h;
+    });
+  }
+  return b;
+}
+function grandBands(){
+  var g={b10:0,b20:0,b30:0,b40:0,bx:0};
+  for(var n=1;n<=ROOMS;n++){var b=roomBands(n);g.b10+=b.b10;g.b20+=b.b20;g.b30+=b.b30;g.b40+=b.b40;g.bx+=b.bx;}
+  return g;
+}
+function refreshBands(){
+  for(var n=1;n<=ROOMS;n++){
+    var b=roomBands(n), el=document.getElementById('bands-'+n);
+    if(!el) continue;
+    el.querySelector('[data-b="10"]').textContent=b.b10;
+    el.querySelector('[data-b="20"]').textContent=b.b20;
+    el.querySelector('[data-b="30"]').textContent=b.b30;
+    el.querySelector('[data-b="40"]').textContent=b.b40;
+    var xw=el.querySelector('.rb.bx');
+    if(xw){ xw.querySelector('i').textContent=b.bx; xw.style.display=b.bx>0?'':'none'; }
+  }
+  var g=grandBands();
+  document.getElementById('bt-10').textContent=g.b10;
+  document.getElementById('bt-20').textContent=g.b20;
+  document.getElementById('bt-30').textContent=g.b30;
+  document.getElementById('bt-40').textContent=g.b40;
+  document.getElementById('bt-x').textContent=g.bx;
+  document.getElementById('bt-x-wrap').style.display=g.bx>0?'':'none';
+}
+
+function getData(n) {
+  const d = { lh:[], lw:[], rh:[], rw:[] };
+  for (let i = 0; i < 5; i++) {
+    d.lh.push(document.getElementById('lh-'+n+'-'+i)?.value || '');
+    d.lw.push(document.getElementById('lw-'+n+'-'+i)?.value || '');
+    d.rh.push(document.getElementById('rh-'+n+'-'+i)?.value || '');
+    d.rw.push(document.getElementById('rw-'+n+'-'+i)?.value || '');
+  }
+  d.autoSum  = document.getElementById('auto-sum-'+n)?.textContent || '0';
+  d.matchTxt = document.getElementById('match-'+n)?.textContent || '—';
+  d.matchCls = document.getElementById('match-'+n)?.className || '';
+  return d;
+}
+
+function buildPrintRoom(n, d) {
+  let rows = '';
+  for (let i = 0; i < 5; i++) {
+    rows += `<div class="p-row">
+      <div class="p-lbl">${LEFT[i]}</div><div class="p-inp">${d.lh[i]}</div><div class="p-inp">${d.lw[i]}</div><div class="p-gap"></div>
+      <div class="p-lbl">${RIGHT[i]}</div><div class="p-inp">${d.rh[i]}</div><div class="p-inp">${d.rw[i]}</div>
+    </div>`;
+  }
+  var b=roomBands(n);
+  var bandline='区分 10:'+b.b10+' / 20:'+b.b20+' / 30:'+b.b30+' / 40:'+b.b40+(b.bx?' / 未:'+b.bx:'');
+  return `<div class="p-room">
+    <div class="p-room-label">${n}号室</div>
+    <div class="p-inner">
+      <div class="p-rows-col">
+        <div class="p-col-heads">
+          <span></span><span>頭数</span><span>体重</span><span></span>
+          <span></span><span>頭数</span><span>体重</span>
+        </div>
+        ${rows}
+      </div>
+      <div class="p-side-col">
+        <div class="p-side-lbl">頭数合計</div>
+        <div class="p-side-val">${d.autoSum}</div>
+      </div>
+      <div class="p-bands">${bandline}</div>
+    </div>
+  </div>`;
+}
+
+function printAll() {
+  const year = document.getElementById('g-year').value || '';
+  const mon  = document.getElementById('g-month').value || '';
+  const day  = document.getElementById('g-day').value || '';
+  const rec  = document.getElementById('g-rec').value || '';
+  const grand = document.getElementById('grand-total').textContent;
+  let grid = '';
+  for (let n = 1; n <= ROOMS; n++) grid += buildPrintRoom(n, getData(n));
+  var gb=grandBands();
+  var gbline='10kg: '+gb.b10+'　20kg: '+gb.b20+'　30kg: '+gb.b30+'　40kg: '+gb.b40+(gb.bx?'　未分類: '+gb.bx:'');
+  document.getElementById('print-area').innerHTML = `
+    <div class="print-header">
+      <h2>溝辺農場　子豚舎棚卸表</h2>
+      <div class="print-date">${year}年　${mon}月　${day}日　　記録者　${rec}</div>
+    </div>
+    <div class="print-grid">${grid}</div>
+    <div class="print-bands">体重区分別 頭数（全室合計）　${gbline}</div>
+    <div class="print-footer">総頭数　<span class="val">${grand}</span></div>`;
+  document.getElementById('print-area').style.display = 'block';
+  window.print();
+  document.getElementById('print-area').style.display = 'none';
+}
+
+function printCurrent() {
+  const n = currentRoom;
+  const d = getData(n);
+  const year = document.getElementById('g-year').value || '';
+  const mon  = document.getElementById('g-month').value || '';
+  const day  = document.getElementById('g-day').value || '';
+  const rec  = document.getElementById('g-rec').value || '';
+  document.getElementById('print-area').innerHTML = `
+    <div class="print-header">
+      <h2>溝辺農場　子豚舎棚卸表</h2>
+      <div class="print-date">${year}年　${mon}月　${day}日　　記録者　${rec}</div>
+    </div>
+    <div class="print-grid">${buildPrintRoom(n, d)}</div>
+    <div class="print-footer">総頭数　<span class="val">${d.autoSum}</span></div>`;
+  document.getElementById('print-area').style.display = 'block';
+  window.print();
+  document.getElementById('print-area').style.display = 'none';
+}
+
+function switchTab(n) {
+  currentRoom = n;
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', +b.dataset.room === n));
+  document.querySelectorAll('.sheet').forEach(s => s.classList.toggle('active', s.id === 'sheet-' + n));
+}
+
+// ── 初期化 ──
+const tabsEl = document.getElementById('tabs');
+const sheetsEl = document.getElementById('sheets');
+tabsEl.innerHTML = '';
+sheetsEl.innerHTML = '';
+for (let i = 1; i <= ROOMS; i++) {
+  const btn = document.createElement('button');
+  btn.className = 'tab-btn' + (i === 1 ? ' active' : '');
+  btn.dataset.room = i; btn.textContent = i + '号室';
+  btn.onclick = () => switchTab(i);
+  tabsEl.appendChild(btn);
+  const sheet = buildSheet(i);
+  if (i === 1) sheet.classList.add('active');
+  sheetsEl.appendChild(sheet);
+}
+loadAll();
+sheetsEl.addEventListener('input', refreshBands);
+refreshBands();
+</script>
+
+
+</body></html>

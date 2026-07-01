@@ -186,11 +186,11 @@ h1 { font-size: 18px; font-weight: 500; text-align: center; margin-bottom: 12px;
     <h2>合計</h2>
     <div id="side-totals-container"><div class="side-totals" data-barn-id="31" style="">
         <div class="side-totals-title">31-A</div>
-        <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-31-A">429</div></div></div><div class="side-totals" data-barn-id="31" style="">
+        <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-31-A">0</div></div></div><div class="side-totals" data-barn-id="31" style="">
         <div class="side-totals-title">31-B</div>
         <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-31-B">0</div></div></div><div class="side-totals" data-barn-id="32" style="display: none;">
         <div class="side-totals-title">32-A</div>
-        <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-32-A">102</div></div></div><div class="side-totals" data-barn-id="32" style="display: none;">
+        <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-32-A">0</div></div></div><div class="side-totals" data-barn-id="32" style="display: none;">
         <div class="side-totals-title">32-B</div>
         <div class="total-card"><div class="label">頭数</div><div class="value" id="st-count-32-B">0</div></div></div><div class="side-totals" data-barn-id="33" style="display: none;">
         <div class="side-totals-title">33-A</div>
@@ -208,7 +208,7 @@ h1 { font-size: 18px; font-weight: 500; text-align: center; margin-bottom: 12px;
     <div class="side-totals-title" style="margin-top:8px;">全棟　総頭数</div>
     <div class="grand-total-card">
       <div class="label">総頭数</div>
-      <div class="value" id="grand-count">531</div>
+      <div class="value" id="grand-count">0</div>
     </div></div></div>
     <div class="band-section" id="band-section">
       <div class="side-totals-title" style="margin-top:8px;">体重区分別　頭数（全棟 合計）</div>
@@ -239,17 +239,17 @@ h1 { font-size: 18px; font-weight: 500; text-align: center; margin-bottom: 12px;
     <div class="print-summary-2col">
       <table class="print-summary-table">
         <thead><tr><th>ロット</th><th>頭数</th></tr></thead>
-        <tbody id="print-body-left"><tr><td>311</td><td>429</td></tr><tr><td>312</td><td>0</td></tr><tr><td>321</td><td>0</td></tr><tr><td>322</td><td>102</td></tr><tr><td>323</td><td>0</td></tr></tbody>
+        <tbody id="print-body-left"></tbody>
       </table>
       <table class="print-summary-table">
         <thead><tr><th>ロット</th><th>頭数</th></tr></thead>
-        <tbody id="print-body-right"><tr><td>324</td><td>0</td></tr><tr><td>353</td><td>0</td></tr><tr><td>354</td><td>0</td></tr><tr><td>351</td><td>0</td></tr></tbody>
-        <tfoot><tr class="print-grand-row"><td>全体　総頭数</td><td id="print-grand-count">531</td></tr></tfoot>
+        <tbody id="print-body-right"></tbody>
+        <tfoot><tr class="print-grand-row"><td>全体　総頭数</td><td id="print-grand-count">0</td></tr></tfoot>
       </table>
     </div>
     <div class="print-total-line">全棟　総頭数　<span id="print-grand-count2">0</span> 頭</div>
     <div class="print-band-title">体重区分別　頭数（全棟合計）</div>
-    <div id="print-band-area"></div>
+    <div id="print-band-area"><table class="print-band-table"><thead><tr><th>区分</th><th>30kg</th><th>40kg</th><th>50kg</th><th>60kg</th><th>70kg</th><th>80kg</th><th>90kg</th><th>100kg</th><th>110kg</th><th>計</th></tr></thead><tbody><tr><td class="big">頭数</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td><td class="big">0</td></tr></tbody></table></div>
   </div>
 </div>
 
@@ -912,6 +912,7 @@ loadData();
 updateLotBands();
 buildBulkInputAreas();
 switchTab('31');
+updateTotals();
 </script>
 
 
